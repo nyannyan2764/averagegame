@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>アベレージゲーム</title>
+    <title>美人投票</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Poppins:wght@700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="background-animation"></div>
+    
     <div id="game-container">
-        <div class="scanlines"></div>
 
         <div id="setup-screen" class="screen active">
-            <h1 class="game-title" data-text="アベレージゲーム">アベレージゲーム</h1>
+            <h1 class="game-title">美人投票</h1>
             <div class="rule-box">
                 <p><strong>【ルール】</strong></p>
                 <p>0〜100の数字、あるいは「JOKER」を選択してください。</p>
@@ -30,20 +31,28 @@
 
             <div id="player-setup">
                 <input type="text" id="player-name-input" placeholder="参加者名を入力..." autocomplete="off">
-                <button id="add-player-btn" class="cybr-btn">追加</button>
+                <button id="add-player-btn" class="btn">追加</button>
             </div>
             <h3>【<span id="current-player-count">0</span> / <span id="total-player-count">3</span>】参加者</h3>
             <ul id="player-list"></ul>
-            <button id="start-game-btn" class="cybr-btn primary" disabled>ゲーム開始</button>
+            <button id="start-game-btn" class="btn primary" disabled>ゲーム開始</button>
         </div>
 
         <div id="game-screen" class="screen">
+            <div id="player-select-overlay" class="overlay active">
+                <div class="player-select-box">
+                    <h2>あなたは誰ですか？</h2>
+                    <div id="player-select-buttons">
+                        </div>
+                    <button id="confirm-player-btn" class="btn primary" disabled>このプレイヤーで操作する</button>
+                </div>
+            </div>
+            
             <h2 id="round-title" class="round-title"></h2>
             <div id="current-rule" class="rule-highlight"></div>
             <div id="scoreboard"></div>
-            <p class="instruction-text">数字を選択してください</p>
             <div id="input-area"></div>
-            <button id="submit-numbers-btn" class="cybr-btn primary">提出</button>
+            <button id="submit-numbers-btn" class="btn primary">提出</button>
         </div>
 
         <div id="result-screen" class="screen">
@@ -55,26 +64,28 @@
             </div>
             <h3 id="round-winner"></h3>
             <div id="result-scoreboard"></div>
-            <button id="next-round-btn" class="cybr-btn">次のラウンドへ</button>
+            <button id="next-round-btn" class="btn">次のラウンドへ</button>
         </div>
         
         <div id="game-clear-screen" class="screen">
-            <h1 class="game-title" data-text="ゲームクリア">ゲームクリア</h1>
+            <h1 class="game-title">GAME CLEAR</h1>
             <h2 id="final-winner"></h2>
             <p>最後の生存者です。おめでとうございます。</p>
-            <button id="play-again-btn-clear" class="cybr-btn">もう一度プレイ</button>
+            <button id="play-again-btn-clear" class="btn">もう一度プレイ</button>
         </div>
     </div>
     
     <div id="elimination-screen" class="screen overlay">
         <div class="elimination-box">
-            <h1 class="game-title" data-text="GAME OVER">GAME OVER</h1>
+            <h1 class="game-title">GAME OVER</h1>
             <p id="eliminated-player-name" class="eliminated-name-display"></p>
             <p>あなたのゲームはここで終了です。</p>
-            <button id="spectate-btn" class="cybr-btn">観戦に戻る</button>
+            <button id="spectate-btn" class="btn">観戦に戻る</button>
         </div>
     </div>
 
     <script type="module" src="main.js"></script>
+    <script type="module" src="ui.js"></script>
+    <script type="module" src="state.js"></script>
 </body>
 </html>
