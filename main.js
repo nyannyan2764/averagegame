@@ -170,6 +170,9 @@ function init() {
         UI.renderPlayerList();
         UI.updateStartButtonState();
     });
+
+    elements.playerNameInput.addEventListener('input', UI.updateStartButtonState); 
+    
     elements.playerNameInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') addPlayer(); });
     document.getElementById('add-player-btn').addEventListener('click', addPlayer);
     elements.startGameBtn.addEventListener('click', startRound);
